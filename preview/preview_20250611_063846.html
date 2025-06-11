@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>John Doe - Resume</title>
+  <style>
+    /* * {
+      box-sizing: border-box;
+    } */
+    
+      body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 10px;
+    background: #f5f5f5;
+    color: #2c2c2c;
+    line-height: 1.4;
+  }
+
+  .container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .header {
+    text-align: center;
+    border-bottom: 2px solid #444;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 26px;
+    margin-bottom: 4px;
+  }
+
+  .contact {
+    font-size: 13px;
+    color: #555;
+  }
+
+  .main {
+    display: flex;
+    gap: 20px;
+  }
+
+  .left {
+    flex: 0 0 250px;
+    padding: 10px;
+    background: #f8f8f8;
+    border: 1px solid #ccc;
+  }
+
+  .right {
+    flex: 1;
+    padding: 0 10px;
+  }
+
+  h2 {
+    font-size: 16px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  ul {
+    padding-left: 18px;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 3px;
+    font-size: 13px;
+  }
+
+  .item-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .item-subtitle {
+    font-size: 13px;
+    color: #666;
+  }
+
+  .item-description {
+    font-size: 13px;
+    margin-bottom: 4px;
+    text-align: justify;
+  }
+
+  .profile-summary {
+    font-size: 13px;
+    padding: 10px;
+    background: #f0f0f0;
+    border-left: 3px solid #333;
+    margin-bottom: 12px;
+  }
+
+  .project-tech,
+  .project-url,
+  .credential-id {
+    font-size: 12px;
+    color: #555;
+  }
+
+  .section-content {
+    margin-bottom: 14px;
+  }
+
+  .experience-item,
+  .project-item,
+  .education-item,
+  .certification-item {
+    margin-bottom: 12px;
+  }
+
+  @media print {
+    body {
+      padding: 0;
+      background: #fff;
+    }
+
+    .container {
+      box-shadow: none;
+      padding: 20px;
+    }
+
+    .main {
+      flex-direction: column;
+    }
+
+    .left {
+      margin-bottom: 15px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      
+      <h1>John Doe</h1>
+      <div class="contact">
+        john.doe@email.com
+        <span class="contact-separator">•</span>
+        +1-555-0123
+        
+        <span class="contact-separator">•</span>
+        New York, NY
+        
+      </div>
+    </div>
+    
+    <div class="main">
+      <div class="left">
+        <div class="section-content">
+          <h2>Skills</h2>
+          <ul>
+            
+            <li>Python</li>
+            
+            <li>JavaScript</li>
+            
+            <li>React</li>
+            
+            <li>Node.js</li>
+            
+            <li>SQL</li>
+            
+          </ul>
+        </div>
+        
+        <div class="section-content">
+          <h2>Education</h2>
+          
+          <div class="education-item education-details">
+            <div class="item-title">Bachelor of Computer Science</div>
+            <div class="item-subtitle">University of Technology</div>
+            
+            <div style="font-size: 13px; margin-top: 3px;">
+              2019
+               • 
+              <span class="gpa">GPA: 3.8</span>
+            </div>
+            
+          </div>
+          
+        </div>
+        
+        
+        <div class="section-content">
+          <h2>Languages</h2>
+          <ul>
+            
+            <li>English <em>(Native)</em></li>
+            
+            <li>Spanish <em>(Intermediate)</em></li>
+            
+          </ul>
+        </div>
+        
+      </div>
+      
+      <div class="right">
+        
+        <div class="section-content">
+          <h2>Professional Summary</h2>
+          <div class="profile-summary">I'm a technical expert with experience in various skills, skilled in delivering innovative solutions, aiming to drive digital transformation.</div>
+        </div>
+        
+        
+        <div class="section-content">
+          <h2>Professional Experience</h2>
+          
+          <div class="experience-item">
+            <div class="item-title">Senior Developer</div>
+            <div class="item-subtitle">Tech Solutions Inc. • January 2022 - Present</div>
+            <div class="item-description">Led development of web applications using React and Python...</div>
+          </div>
+          
+        </div>
+        
+        
+        <div class="section-content">
+          <h2>Notable Projects</h2>
+          
+          <div class="project-item">
+            <div class="item-title">E-commerce Platform</div>
+            <div class="item-description">Built a full-stack e-commerce platform...</div>
+            <div class="project-tech"><strong>Technologies:</strong> React, Node.js, MongoDB</div>
+            
+          </div>
+          
+        </div>
+        
+        
+        
+        <div class="section-content">
+          <h2>Certifications</h2>
+          
+          <div class="certification-item">
+            <div class="item-title">AWS Certified Developer</div>
+            <div class="item-subtitle">Amazon Web Services • 2023-01</div>
+            
+            <div class="credential-id">Credential ID: AWS-123456</div>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</body>
+</html>

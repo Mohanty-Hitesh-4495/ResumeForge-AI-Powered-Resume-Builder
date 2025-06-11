@@ -1,0 +1,20 @@
+# Environment variables
+.env
+
+# Firebase credentials
+*firebase-adminsdk*.json
+*firebase-adminsdk*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.myenv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/

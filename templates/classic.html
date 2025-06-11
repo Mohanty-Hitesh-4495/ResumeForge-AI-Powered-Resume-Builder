@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ personal_info.full_name }} - Resume</title>
+  <style>
+    /* * {
+      box-sizing: border-box;
+    } */
+    
+      body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 10px;
+    background: #f5f5f5;
+    color: #2c2c2c;
+    line-height: 1.4;
+  }
+
+  .container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .header {
+    text-align: center;
+    border-bottom: 2px solid #444;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 26px;
+    margin-bottom: 4px;
+  }
+
+  .contact {
+    font-size: 13px;
+    color: #555;
+  }
+
+  .main {
+    display: flex;
+    gap: 20px;
+  }
+
+  .left {
+    flex: 0 0 250px;
+    padding: 10px;
+    background: #f8f8f8;
+    border: 1px solid #ccc;
+  }
+
+  .right {
+    flex: 1;
+    padding: 0 10px;
+  }
+
+  h2 {
+    font-size: 16px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  ul {
+    padding-left: 18px;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 3px;
+    font-size: 13px;
+  }
+
+  .item-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .item-subtitle {
+    font-size: 13px;
+    color: #666;
+  }
+
+  .item-description {
+    font-size: 13px;
+    margin-bottom: 4px;
+    text-align: justify;
+  }
+
+  .profile-summary {
+    font-size: 13px;
+    padding: 10px;
+    background: #f0f0f0;
+    border-left: 3px solid #333;
+    margin-bottom: 12px;
+  }
+
+  .project-tech,
+  .project-url,
+  .credential-id {
+    font-size: 12px;
+    color: #555;
+  }
+
+  .section-content {
+    margin-bottom: 14px;
+  }
+
+  .experience-item,
+  .project-item,
+  .education-item,
+  .certification-item {
+    margin-bottom: 12px;
+  }
+
+  @media print {
+    body {
+      padding: 0;
+      background: #fff;
+    }
+
+    .container {
+      box-shadow: none;
+      padding: 20px;
+    }
+
+    .main {
+      flex-direction: column;
+    }
+
+    .left {
+      margin-bottom: 15px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      {% if personal_info.profile_pic %}
+      <img src="{{ personal_info.profile_pic }}" alt="Profile Picture" class="profile-pic">
+      {% endif %}
+      <h1>{{ personal_info.full_name }}</h1>
+      <div class="contact">
+        {{ personal_info.email }}
+        <span class="contact-separator">•</span>
+        {{ personal_info.phone }}
+        {% if personal_info.location %}
+        <span class="contact-separator">•</span>
+        {{ personal_info.location }}
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="main">
+      <div class="left">
+        <div class="section-content">
+          <h2>Skills</h2>
+          <ul>
+            {% for skill in skills %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+        <div class="section-content">
+          <h2>Education</h2>
+          {% for edu in education %}
+          <div class="education-item education-details">
+            <div class="item-title">{{ edu.degree }}</div>
+            <div class="item-subtitle">{{ edu.institution }}</div>
+            {% if edu.year or edu.gpa %}
+            <div style="font-size: 13px; margin-top: 3px;">
+              {% if edu.year %}{{ edu.year }}{% endif %}
+              {% if edu.year and edu.gpa %} • {% endif %}
+              {% if edu.gpa %}<span class="gpa">GPA: {{ edu.gpa }}</span>{% endif %}
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        
+        {% if languages %}
+        <div class="section-content">
+          <h2>Languages</h2>
+          <ul>
+            {% for lang in languages %}
+            <li>{{ lang.name }} <em>({{ lang.proficiency }})</em></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+      
+      <div class="right">
+        {% if personal_info.summary %}
+        <div class="section-content">
+          <h2>Professional Summary</h2>
+          <div class="profile-summary">{{ personal_info.summary }}</div>
+        </div>
+        {% endif %}
+        
+        <div class="section-content">
+          <h2>Professional Experience</h2>
+          {% for exp in experience %}
+          <div class="experience-item">
+            <div class="item-title">{{ exp.position }}</div>
+            <div class="item-subtitle">{{ exp.company }} • {{ exp.start_date }} - {{ exp.end_date }}</div>
+            <div class="item-description">{{ exp.description }}</div>
+          </div>
+          {% endfor %}
+        </div>
+        
+        {% if projects %}
+        <div class="section-content">
+          <h2>Notable Projects</h2>
+          {% for project in projects %}
+          <div class="project-item">
+            <div class="item-title">{{ project.name }}</div>
+            <div class="item-description">{{ project.description }}</div>
+            <div class="project-tech"><strong>Technologies:</strong> {{ project.technologies }}</div>
+            {% if project.url %}
+            <a href="{{ project.url }}" class="project-url" target="_blank">{{ project.url }}</a>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if certifications %}
+        <div class="section-content">
+          <h2>Certifications</h2>
+          {% for cert in certifications %}
+          <div class="certification-item">
+            <div class="item-title">{{ cert.name }}</div>
+            <div class="item-subtitle">{{ cert.issuer }} • {{ cert.date }}</div>
+            {% if cert.credential_id %}
+            <div class="credential-id">Credential ID: {{ cert.credential_id }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
