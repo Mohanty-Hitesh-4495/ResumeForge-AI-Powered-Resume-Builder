@@ -426,21 +426,21 @@ st.markdown("""
 
     .feature-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* More flexible grid */
-        gap: 1.5rem; /* Slightly increased gap */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Further reduced from 250px */
+        gap: 0.8rem; /* Further reduced from 1rem */
         margin: 0 auto;
-        padding: 0 1rem;
+        padding: 0 0.8rem; /* Reduced from 1rem */
         max-width: 800px;
     }
     .feature-card {
         background: white;
-        padding: 1.5rem; /* Restored padding */
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        padding: 1rem; /* Further reduced from 1.2rem */
+        border-radius: 8px; /* Further reduced from 10px */
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05); /* Further reduced shadow */
         border: 1px solid #e1e8ed;
         transition: all 0.3s ease;
-        height: auto; /* Allow height to adjust based on content */
-        min-height: 200px; /* Ensure a slightly larger minimum height */
+        height: auto;
+        min-height: 140px; /* Further reduced from 160px */
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -450,28 +450,28 @@ st.markdown("""
         overflow-wrap: break-word;
     }
     .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        transform: translateY(-2px); /* Further reduced from -3px */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Further reduced shadow */
     }
     .feature-card h3 {
         color: #2c3e50;
-        margin-bottom: 0.6rem;
-        font-size: 1.2rem;
+        margin-bottom: 0.4rem; /* Further reduced from 0.5rem */
+        font-size: 1rem; /* Further reduced from 1.1rem */
         font-weight: 600;
         word-wrap: break-word;
     }
     .feature-card p {
         color: #4a5568;
         opacity: 0.9;
-        line-height: 1.5;
-        font-size: 0.9rem; /* Kept font size */
+        line-height: 1.3; /* Further reduced from 1.4 */
+        font-size: 0.8rem; /* Further reduced from 0.85rem */
         margin-top: 0;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
     .feature-icon {
-        font-size: 2rem;
-        margin-bottom: 0.8rem;
+        font-size: 1.6rem; /* Reduced from 2rem */
+        margin-bottom: 0.6rem; /* Reduced from 0.8rem */
         background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -928,7 +928,6 @@ if st.session_state.show_home:
     with col1:
         st.markdown("""
         <div class="feature-card">
-            <div class="feature-icon">📝</div>
             <h3>Smart Resume Builder</h3>
             <p>Create professional resumes with our intuitive form-based interface. Add your experience, education, skills, and more with ease. Our smart suggestions help you craft the perfect resume.</p>
         </div>
@@ -937,7 +936,6 @@ if st.session_state.show_home:
     with col2:
         st.markdown("""
         <div class="feature-card">
-            <div class="feature-icon">🎨</div>
             <h3>Beautiful Templates</h3>
             <p>Choose from multiple professionally designed templates. Each template is optimized for readability and impact, helping you stand out to potential employers.</p>
         </div>
@@ -948,7 +946,6 @@ if st.session_state.show_home:
     with col3:
         st.markdown("""
         <div class="feature-card">
-            <div class="feature-icon">🤖</div>
             <h3>AI-Powered Suggestions</h3>
             <p>Get intelligent suggestions for your resume content using advanced AI technology. Our AI helps you highlight your strengths and achievements effectively.</p>
         </div>
@@ -957,7 +954,6 @@ if st.session_state.show_home:
     with col4:
         st.markdown("""
         <div class="feature-card">
-            <div class="feature-icon">💾</div>
             <h3>Easy Export</h3>
             <p>Download your resume as a PDF or save your data for future edits. Your information is always safe and accessible, making updates a breeze.</p>
         </div>
@@ -965,12 +961,12 @@ if st.session_state.show_home:
     
 
     # Enhanced Call to Action section
-    st.markdown("""
-    <div class="cta-section">
-        <h2>Ready to Create Your Professional Resume?</h2>
-        <p>Start building your resume now and take the next step in your career journey. Our AI-powered builder will help you create a standout resume in minutes.</p>
-    </div>
-    """, unsafe_allow_html=True)
+    # st.markdown("""
+    # <div class="cta-section">
+    #     <h2>Ready to Create Your Professional Resume?</h2>
+    #     <p>Start building your resume now and take the next step in your career journey. Our AI-powered builder will help you create a standout resume in minutes.</p>
+    # </div>
+    # """, unsafe_allow_html=True)
 
     # Action button to switch to the form
     st.markdown("""
@@ -1554,106 +1550,90 @@ else:
     # Initialize generator
     generator = ResumeGenerator()
 
-    # Create two columns for template selection and preview
-    col_template, col_preview = st.columns([1, 2])
+    # Create a single column for template selection and controls
+    st.markdown("#### 🎨 Choose Template")
 
-    with col_template:
-        st.markdown("#### 🎨 Choose Template")
+    # Template selection with preview cards
+    template_name = st.radio(
+        "Select a template style:",
+        options=list(generator.templates.keys()),
+        format_func=lambda x: x.capitalize(),
+        label_visibility="collapsed"
+    )
 
-        # Template selection with preview cards
-        template_name = st.radio(
-            "Select a template style:",
-            options=list(generator.templates.keys()),
-            format_func=lambda x: x.capitalize(),
-            label_visibility="collapsed"
-        )
+    # Template descriptions
+    template_descriptions = {
+        "classic": "Traditional two-column layout with a professional look",
+        "modern": "Contemporary design with a bold header and card-based sections",
+        "minimalist": "Clean and simple layout focusing on content"
+    }
 
-        # Template descriptions
-        template_descriptions = {
-            "classic": "Traditional two-column layout with a professional look",
-            "modern": "Contemporary design with a bold header and card-based sections",
-            "minimalist": "Clean and simple layout focusing on content"
-        }
+    st.markdown(f"**{template_name.capitalize()} Style**")
+    st.markdown(f"_{template_descriptions[template_name]}_")
 
-        st.markdown(f"**{template_name.capitalize()} Style**")
-        st.markdown(f"_{template_descriptions[template_name]}_")
+    # Create a container for the generate and download buttons
+    button_container = st.container()
+    with button_container:
+        col_gen, col_dl = st.columns(2)
+        with col_gen:
+            generate_clicked = st.button("🔄 Generate Resume", type="primary", use_container_width=True)
+        with col_dl:
+            download_disabled = 'last_generated_resume' not in st.session_state
+            download_clicked = st.button("📥 Download PDF", disabled=download_disabled, use_container_width=True)
 
-        # Create a container for the generate and download buttons
-        button_container = st.container()
-        with button_container:
-            col_gen, col_dl = st.columns(2)
-            with col_gen:
-                generate_clicked = st.button("🔄 Generate Resume", type="primary", use_container_width=True)
-            with col_dl:
-                download_disabled = 'last_generated_resume' not in st.session_state
-                download_clicked = st.button("📥 Download PDF", disabled=download_disabled, use_container_width=True)
+    if generate_clicked:
+        with st.spinner("Generating your resume..."):
+            # First, generate summaries using the summarizer
+            from summarizer_agent import generate_profile_summary, generate_project_description, generate_job_description
 
-        if generate_clicked:
-            with st.spinner("Generating your resume..."):
-                # First, generate summaries using the summarizer
-                from summarizer_agent import generate_profile_summary, generate_project_description, generate_job_description
+            # Generate profile summary
+            if st.session_state.resume_data['personal_info']:
+                personal_info = st.session_state.resume_data['personal_info']
+                personal_info['summary'] = generate_profile_summary(personal_info)
 
-                # Generate profile summary
-                if st.session_state.resume_data['personal_info']:
-                    personal_info = st.session_state.resume_data['personal_info']
-                    personal_info['summary'] = generate_profile_summary(personal_info)
-
-                # Generate project descriptions
-                for project in st.session_state.resume_data['projects']:
-                    if not project.get('description'):
-                        project['description'] = generate_project_description(
-                            project['name'],
-                            project['technologies'].split(', ')
-                        )
-
-                # Generate job descriptions
-                for exp in st.session_state.resume_data['experience']:
-                    if not exp.get('description'):
-                        exp['description'] = generate_job_description(
-                            exp['company'],
-                            exp['position'],
-                            exp['start_date'],
-                            exp['end_date']
-                        )
-
-                # Now generate the resume
-                show_resume_preview(generator, template_name, st.session_state.resume_data)
-
-        if download_clicked and not download_disabled:
-            # Generate PDF
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            pdf_filename = f"resume_{timestamp}.pdf"
-            pdf_path = generator.generate_pdf(
-                generator.render_template(template_name, st.session_state.resume_data),
-                pdf_filename
-            )
-            
-            if pdf_path:
-                # Create download button with direct file bytes
-                pdf_bytes, download_filename = generator.get_pdf_download_link(pdf_path)
-                if pdf_bytes:
-                    st.download_button(
-                        label="📥 Download PDF",
-                        data=pdf_bytes,
-                        file_name=download_filename,
-                        mime="application/pdf",
-                        use_container_width=True
+            # Generate project descriptions
+            for project in st.session_state.resume_data['projects']:
+                if not project.get('description'):
+                    project['description'] = generate_project_description(
+                        project['name'],
+                        project['technologies'].split(', ')
                     )
-                else:
-                    st.error("Failed to create PDF download link")
+
+            # Generate job descriptions
+            for exp in st.session_state.resume_data['experience']:
+                if not exp.get('description'):
+                    exp['description'] = generate_job_description(
+                        exp['company'],
+                        exp['position'],
+                        exp['start_date'],
+                        exp['end_date']
+                    )
+
+            # Generate the resume (preview will be saved but not displayed)
+            show_resume_preview(generator, template_name, st.session_state.resume_data)
+            st.success("✅ Resume generated successfully! You can now download the PDF.")
+
+    if download_clicked and not download_disabled:
+        # Generate PDF
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        pdf_filename = f"resume_{timestamp}.pdf"
+        pdf_path = generator.generate_pdf(
+            generator.render_template(template_name, st.session_state.resume_data),
+            pdf_filename
+        )
+        
+        if pdf_path:
+            # Create download button with direct file bytes
+            pdf_bytes, download_filename = generator.get_pdf_download_link(pdf_path)
+            if pdf_bytes:
+                st.download_button(
+                    label="📥 Download PDF",
+                    data=pdf_bytes,
+                    file_name=download_filename,
+                    mime="application/pdf",
+                    use_container_width=True
+                )
             else:
-                st.error("Failed to generate PDF file")
-
-    with col_preview:
-        st.markdown("#### 👁️ Preview")
-
-        # Show a placeholder or the actual preview
-        if 'last_generated_resume' in st.session_state:
-            preview_path = st.session_state.last_generated_resume
-            st.components.v1.iframe(
-                preview_path,
-                height=800,
-                scrolling=True
-            )
+                st.error("Failed to create PDF download link")
         else:
-            st.info("Select a template and click 'Generate Resume' to see the preview")
+            st.error("Failed to generate PDF file")

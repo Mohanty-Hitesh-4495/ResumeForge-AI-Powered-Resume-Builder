@@ -1,7 +1,7 @@
 import pyrebase
-from firebase_config import firebaseConfig
+from firebase_config import firebaseConfig, db
 
+# Initialize Pyrebase for authentication
 firebase = pyrebase.initialize_app(firebaseConfig)
 auth = firebase.auth()
-db = firebase.database()
 storage = firebase.storage()
