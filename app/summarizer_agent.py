@@ -7,7 +7,7 @@ from langchain_groq import ChatGroq
 load_dotenv()
 groq_api_key = os.getenv("GROQ_API_KEY")
 
-# Initialize Groq LLM with LLaMA 3.3-70B
+# Initialize Groq LLM with LLaMA 3.3-70b-versatile
 llm = ChatGroq(
     api_key=groq_api_key,
     model_name="llama-3.3-70b-versatile"
@@ -17,18 +17,26 @@ llm = ChatGroq(
 
 def generate_profile_summary(info: Dict[str, str]) -> str:
     prompt = f"""
-        You are a professional resume writer. Generate a **first-person** profile summary (**aim for 40-50 words**) using the candidate's name and skills below.
+        You're a professional resume writer. Generate a first-person profile summary (40–50 words) based on the candidate's name and skills below:
 
         Name: {info.get('full_name', '')}
         Skills: {', '.join(info.get('skills', []))}
 
-        Summary must:
-        - Emphasize core strengths and technical focus
-        - Be concise and job-targeted, aiming for 40-50 words.
-        - Avoid location, education, LinkedIn, or third-person tone
+        Guidelines:
+        -Use a first-person tone (e.g., "I'm a...")
+        -Focus on core technical strengths and role-relevant capabilities
+        -Keep it concise, targeted, and within 40–50 words
+        -Do not include location, education, or LinkedIn
+        -Avoid third-person language or generic filler
 
-        Write like:  
-        "I'm a [role/profession] with experience in [skills/fields], skilled in [technical strengths], aiming to [career goal/value proposition]."
+        Examples for reference:
+        Data Scientist:
+        "I'm a Data Scientist skilled in extracting actionable insights from complex datasets using machine learning, statistical analysis, and data visualization. Experienced in building end-to-end predictive models and deploying them in real-world applications."
+        Software Engineer:
+        "I'm a Software Engineer skilled in building scalable and efficient web applications using Python, Django, and PostgreSQL. Experienced in developing RESTful APIs and implementing security measures to ensure data integrity."
+        Full-Stack Developer:
+        "I'm a Full-Stack Developer proficient in designing and building scalable web applications with expertise in both frontend and backend technologies. Adept at developing RESTful APIs, managing databases, and delivering responsive, user-friendly interfaces."
+
         """
     return llm.invoke(prompt).content.strip()
 
@@ -36,7 +44,7 @@ def generate_profile_summary(info: Dict[str, str]) -> str:
 
 def generate_project_description(name: str, technologies: List[str]) -> str:
     prompt = f"""
-        You are writing a resume bullet for a technical project.
+        You are writing a resume project description for a technical or non-technical project.
 
         Project Name: {name}  
         Technologies: {', '.join(technologies)}
@@ -48,7 +56,7 @@ def generate_project_description(name: str, technologies: List[str]) -> str:
 
         Avoid buzzwords. Be direct and technical.
         Example:  
-        "Built a resume builder using Streamlit and LangChain to auto-generate tailored resumes from user inputs, reducing manual effort by 80%."
+        "Built a resume builder using Streamlit and LangChain to auto-generate tailored resumes from user inputs, reducing manual effort by 80%; integrated PDF export and multiple template options for customizable outputs."
         """
     return llm.invoke(prompt).content.strip()
 
@@ -56,13 +64,13 @@ def generate_project_description(name: str, technologies: List[str]) -> str:
 
 def generate_job_description(company: str, position: str, start: str, end: str) -> str:
     prompt = f"""
-        You are writing a job experience bullet point for a resume.
+        You are writing a job experience description for a resume.
 
         Company: {company}  
         Role: {position}  
         Duration: {start} to {end} # Do NOT mention the duration in the bullet point itself.
 
-        Write **1-2 concise bullet points (aim for 40-50 words total)** focused on:
+        Write **2 concise bullet points (aim for 40-50 words total)** focused on:
         - Technologies/tools used
         - Main responsibilities
         - Specific achievement or outcome with metrics (if any)
@@ -70,7 +78,8 @@ def generate_job_description(company: str, position: str, start: str, end: str) 
         Use action verbs (e.g., Developed, Built, Improved). Avoid filler language and do NOT include the duration in the bullet points.
 
         Example:
-        - Developed machine learning models using TensorFlow to predict crop yield, improving accuracy by 20%.
+        - Led backend development using Java and Spring Boot, integrating RESTful APIs and optimizing database performance with PostgreSQL.
+        - Mentored junior developers and implemented CI/CD pipelines with Jenkins and Docker, reducing deployment time by 30%.
         """
     return llm.invoke(prompt).content.strip()
 
