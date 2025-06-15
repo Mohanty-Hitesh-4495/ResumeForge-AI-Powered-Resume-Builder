@@ -134,26 +134,7 @@ def show_resume_preview(generator: ResumeGenerator, template_name: str, resume_d
             height=800,
             scrolling=True
         )
-        
-        # Generate PDF
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        pdf_filename = f"resume_{timestamp}.pdf"
-        pdf_path = generator.generate_pdf(html_content, pdf_filename)
-        
-        if pdf_path:
-            # Create download button with direct file bytes
-            pdf_bytes, download_filename = generator.get_pdf_download_link(pdf_path)
-            if pdf_bytes:
-                st.download_button(
-                    label="📥 Download PDF",
-                    data=pdf_bytes,
-                    file_name=download_filename,
-                    mime="application/pdf"
-                )
-            else:
-                st.error("Failed to create PDF download link")
-        else:
-            st.error("Failed to generate PDF file")
+
     except Exception as e:
         st.error(f"Error in resume generation: {str(e)}")
 
