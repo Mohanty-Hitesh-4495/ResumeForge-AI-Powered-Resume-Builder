@@ -6,6 +6,22 @@ from typing import Optional, Dict, List, Any
 import os
 from pathlib import Path
 from auth import auth, db  # Import Firebase auth and db
+from google.cloud.exceptions import NotFound
+
+# --- Firestore Cloud Sync Helpers ---
+def save_user_data_firestore(user_id: str, data: dict):
+    """Save user data to Firestore."""
+    db.collection("users").document(user_id).set(data)
+
+def fetch_user_data_firestore(user_id: str) -> dict:
+    """Fetch user data from Firestore."""
+    try:
+        doc = db.collection("users").document(user_id).get()
+        if doc.exists:
+            return doc.to_dict()
+    except Exception:
+        pass
+    return None
 
 # Create data directory structure
 DATA_DIR = Path("data")
@@ -123,6 +139,11 @@ def sign_in(email: str, password: str) -> bool:
     try:
         user = auth.sign_in_with_email_and_password(email, password)
         st.session_state.user = user
+        # Fetch Firestore data
+        user_id = user['localId']
+        firestore_data = fetch_user_data_firestore(user_id)
+        if firestore_data:
+            st.session_state.resume_data = firestore_data
         return True
     except Exception as e:
         st.error(f"Error signing in: {str(e)}")
@@ -176,12 +197,207 @@ if st.session_state.show_login and not st.session_state.user:
 
     st.stop()  # Stop execution here if not logged in
 
-# Add sign out button to sidebar
+# Sidebar navigation for main pages
 with st.sidebar:
     if st.session_state.user:
-        if st.button("🚪 Sign Out"):
+        if 'main_page' not in st.session_state:
+            st.session_state.main_page = 'resume'  # 'profile', 'resume', 'about'
+
+        # Profile button
+        if st.button('👤 Profile'):
+            st.session_state.main_page = 'profile'
+            user_id = st.session_state.user['localId']
+            firestore_data = fetch_user_data_firestore(user_id)
+            if firestore_data:
+                st.session_state.resume_data = firestore_data
+
+        # Build Resume button
+        if st.button('📝 Build Your Resume'):
+            st.session_state.main_page = 'resume'
+
+        # About button
+        if st.button('ℹ️ About'):
+            st.session_state.main_page = 'about'
+
+        # Sign out button
+        if st.button('🚪 Sign Out'):
             sign_out()
             st.rerun()
+
+        st.markdown('---')
+
+# Main page rendering
+if st.session_state.user:
+    if st.session_state.main_page == 'profile':
+        personal = st.session_state.resume_data.get('personal_info', {})
+        # Custom CSS for profile styling
+        st.markdown("""
+        <style>
+        .profile-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .info-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid #ffffff;
+            transition: all 0.3s ease;
+        }
+        .info-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+        .info-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+            word-break: break-all;
+        }
+        .profile-image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .profile-image {
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        .summary-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .summary-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-style: italic;
+            text-align: center;
+        }
+        .no-data {
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        # Main profile container
+        # st.markdown('<div class="profile-container">', unsafe_allow_html=True)
+        # Profile header with image and name
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            profile_pic = personal.get('profile_pic', None)
+            if profile_pic and os.path.exists(profile_pic):
+                st.markdown('<div class="profile-image-container">', unsafe_allow_html=True)
+                st.image(profile_pic, width=160, use_column_width=False)
+                st.markdown('</div>', unsafe_allow_html=True)
+            st.markdown(f"""
+            <div class="profile-header">
+                <h1 class="profile-name">{personal.get('full_name', 'No Name Provided')}</h1>
+            </div>
+            """, unsafe_allow_html=True)
+        # Contact information grid
+        # st.markdown('<div class="info-grid">', unsafe_allow_html=True)
+        # Contact details
+        contact_info = [
+            ("📧 Email", personal.get('email', 'Not provided')),
+            ("📱 Phone", personal.get('phone', 'Not provided')),
+            ("📍 Location", personal.get('location', 'Not provided')),
+            ("💼 LinkedIn", personal.get('linkedin', 'Not provided')),
+            ("🐙 GitHub", personal.get('github', 'Not provided'))
+        ]
+        for label, value in contact_info:
+            # Check if it's a URL for LinkedIn/GitHub
+            if value != 'Not provided' and ('linkedin.com' in value or 'github.com' in value):
+                display_value = f'<a href="{value}" target="_blank" style="color: white; text-decoration: underline;">{value}</a>'
+            else:
+                display_value = value if value != 'Not provided' else '<span class="no-data">Not provided</span>'
+            st.markdown(f"""
+            <div class="info-item">
+                <div class="info-label">{label}</div>
+                <div class="info-value">{display_value}</div>
+            </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        # Summary section
+        summary = personal.get('summary', '')
+        if summary and summary.strip():
+            st.markdown(f"""
+            <div class="summary-section">
+                <div class="info-label" style="text-align: center; margin-bottom: 1rem;">✨ PROFESSIONAL SUMMARY</div>
+                <div class="summary-text">{summary}</div>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+            <div class="summary-section">
+                <div class="info-label" style="text-align: center; margin-bottom: 1rem;">✨ PROFESSIONAL SUMMARY</div>
+                <div class="summary-text no-data">No summary provided yet</div>
+            </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        # Add some spacing at the bottom
+        st.markdown('<div style="height: 2rem;"></div>', unsafe_allow_html=True)
+    elif st.session_state.main_page == 'about':
+        st.markdown('<h2 style="text-align:center;">ℹ️ About</h2>', unsafe_allow_html=True)
+        st.info('ResumeForge: Create stunning, professional resumes in minutes with our AI-powered builder!')
+    else:
+        if 'show_home' in st.session_state and st.session_state.show_home:
+            pass
+        else:
+            pass
 
 # Custom CSS (combined from both files)
 st.markdown("""
@@ -1514,6 +1730,9 @@ else:
                                 # Create a backup
                                 save_backup(user_id, st.session_state.resume_data)
 
+                                # Save to Firestore
+                                save_user_data_firestore(user_id, st.session_state.resume_data)
+
                                 st.markdown(f"""
                                 <div class="success-message">
                                     <h4>🎉 Success!</h4>
@@ -1583,7 +1802,6 @@ else:
 
     if generate_clicked:
         with st.spinner("Generating your resume..."):
-            # First, generate summaries using the summarizer
             from summarizer_agent import generate_profile_summary, generate_project_description, generate_job_description
 
             # Generate profile summary
@@ -1609,31 +1827,36 @@ else:
                         exp['end_date']
                     )
 
-            # Generate the resume (preview will be saved but not displayed)
+            # Generate the resume preview
             show_resume_preview(generator, template_name, st.session_state.resume_data)
+
+            # Generate the PDF and store in session state
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            pdf_filename = f"resume_{timestamp}.pdf"
+            pdf_path = generator.generate_pdf(
+                generator.render_template(template_name, st.session_state.resume_data),
+                pdf_filename
+            )
+            if pdf_path:
+                pdf_bytes, download_filename = generator.get_pdf_download_link(pdf_path)
+                if pdf_bytes:
+                    st.session_state.generated_pdf_bytes = pdf_bytes
+                    st.session_state.generated_pdf_filename = download_filename
+                else:
+                    st.session_state.generated_pdf_bytes = None
+                    st.session_state.generated_pdf_filename = None
+            else:
+                st.session_state.generated_pdf_bytes = None
+                st.session_state.generated_pdf_filename = None
+
             st.success("✅ Resume generated successfully! You can now download the PDF.")
 
-    if download_clicked and not download_disabled:
-        # Generate PDF
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        pdf_filename = f"resume_{timestamp}.pdf"
-        pdf_path = generator.generate_pdf(
-            generator.render_template(template_name, st.session_state.resume_data),
-            pdf_filename
+    # Show download button if PDF is available
+    if st.session_state.get('generated_pdf_bytes'):
+        st.download_button(
+            label="📥 Download PDF",
+            data=st.session_state.generated_pdf_bytes,
+            file_name=st.session_state.generated_pdf_filename,
+            mime="application/pdf",
+            use_container_width=True
         )
-        
-        if pdf_path:
-            # Create download button with direct file bytes
-            pdf_bytes, download_filename = generator.get_pdf_download_link(pdf_path)
-            if pdf_bytes:
-                st.download_button(
-                    label="📥 Download PDF",
-                    data=pdf_bytes,
-                    file_name=download_filename,
-                    mime="application/pdf",
-                    use_container_width=True
-                )
-            else:
-                st.error("Failed to create PDF download link")
-        else:
-            st.error("Failed to generate PDF file")
