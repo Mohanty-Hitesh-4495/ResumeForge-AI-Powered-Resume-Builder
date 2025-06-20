@@ -1,0 +1,65 @@
+{
+  "personal_info": {
+    "full_name": "Hitesh Mohanty",
+    "email": "mohantyhitesh4495@gmail.com",
+    "phone": "7205374495",
+    "location": "Bhubaneswar, Odisha",
+    "linkedin": "https://www.linkedin.com/in/hitesh-mohanty8/",
+    "github": "https://github.com/Mohanty-Hitesh-4495"
+  },
+  "experience": [
+    {
+      "company": " Tata Groups, Mumbai ",
+      "position": " AI-Intern (Remote)",
+      "start_date": "2025-02",
+      "end_date": "2025-05",
+      "description": "Heavily involved in AI integration on the backend, developed AI agents and pipelines. Utilized\n technologies like Python, Next.js, LangChain, Docker, and AutoGen."
+    },
+    {
+      "company": " NIT Rourkela",
+      "position": "AI and Data Science Intern (On site)",
+      "start_date": "2025-04",
+      "end_date": "2025-07",
+      "description": " Involved in ML and DL model development, training and testing neural networks and worked on a\n research paper, where developed a CNN model with ResNet50 and MobileNetV2 for Image\n classification task."
+    }
+  ],
+  "education": [
+    {
+      "institution": "GIFT Autonomous, Bhubaneswar",
+      "degree": "B.Tech in Computer Science and Engineering",
+      "year": "2026",
+      "gpa": "9.14"
+    }
+  ],
+  "skills": [
+    "Python",
+    "Langchain",
+    "Tensorflow",
+    "Java",
+    "Autogen",
+    "AI/ML"
+  ],
+  "projects": [
+    {
+      "name": "AI-Powered Resume Builder and Analyzer",
+      "description": "Built an AI-powered resume builder with Firebase authentication, enabling users to create, update, and generate professional resumes from stored profile data.",
+      "technologies": "Python, Langchain, Firebase, Groq",
+      "url": ""
+    }
+  ],
+  "certifications": [],
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Fluent"
+    },
+    {
+      "name": "Odia",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Hindi",
+      "proficiency": "Fluent"
+    }
+  ]
+}

@@ -6,21 +6,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>John Doe - Resume</title>
   <style>
-    body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; background: #fff; }
-    .container { max-width: 800px; margin: auto; padding: 40px; }
-    .header { margin-bottom: 40px; }
-    h1 { margin: 0; font-size: 32px; font-weight: 300; }
-    .contact { margin-top: 10px; font-size: 14px; color: #666; }
-    h2 { font-size: 20px; font-weight: 500; margin: 30px 0 15px; color: #333; }
-    .section { margin-bottom: 30px; }
-    .item { margin-bottom: 20px; }
-    .item-title { font-weight: 500; margin-bottom: 5px; }
-    .item-subtitle { color: #666; font-size: 14px; }
-    .item-content { margin-top: 5px; line-height: 1.5; }
-    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
-    .skill { background: #f5f5f5; padding: 5px 10px; border-radius: 3px; font-size: 14px; }
-    .profile-pic { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 20px; display: block; object-fit: cover; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      font-size: 13px;
+      color: #222;
+    }
+  
+    .container {
+      max-width: 780px;
+      margin: auto;
+      padding: 25px 30px;
+    }
+  
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      margin: 0;
+    }
+  
+    .contact {
+      font-size: 13px;
+      color: #555;
+      margin-top: 6px;
+    }
+  
+    h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 3px;
+      text-transform: uppercase;
+    }
+  
+    .section {
+      margin-bottom: 20px;
+    }
+  
+    .item {
+      margin-bottom: 10px;
+    }
+  
+    .item-title {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+  
+    .item-subtitle {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 3px;
+    }
+  
+    .item-content {
+      line-height: 1.4;
+      text-align: justify;
+    }
+  
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 5px;
+    }
+  
+    .skill {
+      background: #f1f1f1;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+  
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+  
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+      }
+  
+      .container {
+        box-shadow: none;
+        padding: 20px;
+      }
+  
+      .header, .section, .item {
+        page-break-inside: avoid;
+      }
+  
+      .skills {
+        gap: 4px;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+  
+      h1 {
+        font-size: 22px;
+      }
+  
+      h2 {
+        font-size: 14px;
+      }
+    }
   </style>
+  
 </head>
 <body>
   <div class="container">
@@ -36,7 +145,7 @@
     
     <div class="section">
       <h2>Profile</h2>
-      <div class="item-content">As a seasoned professional with expertise in driving business growth through data-driven insights and technical innovation, I leverage my skills to deliver high-impact solutions that propel companies forward. With a strong foundation in technical strengths and a proven track record of success, I bring a unique blend of strategic vision and technical expertise to drive career growth and deliver value to forward-thinking organizations.</div>
+      <div class="item-content">You didn't provide the skills for John Doe. Please provide the skills, and I'll generate a first-person profile summary.</div>
     </div>
     
 

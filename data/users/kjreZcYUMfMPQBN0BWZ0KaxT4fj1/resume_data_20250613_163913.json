@@ -1,0 +1,65 @@
+{
+  "personal_info": {
+    "full_name": "Anjani Kumar Sahoo",
+    "email": "anjanikumarsahoo067@gmail.com",
+    "phone": "8114650116",
+    "location": "Paradeep, Odisha",
+    "linkedin": "https://www.linkedin.com/in/anjani-kumar-sahoo-738a1926a/",
+    "github": "https://github.com/Anjani-189"
+  },
+  "experience": [
+    {
+      "company": "CTTC, Bhubaneswar",
+      "position": "AI/ML Intern",
+      "start_date": "2024/06",
+      "end_date": "2024/07",
+      "description": "Developed and deployed multiple production-level AI/ML models during internship at CTTC, focusing on real-world problem-solving and model optimization."
+    },
+    {
+      "company": "Glucian Pvt. Lmt., Bhubaneswar",
+      "position": "Java Developer Intern",
+      "start_date": "2023/06",
+      "end_date": "2023/07",
+      "description": "Worked on Java-based application development at Glucian Pvt. Ltd., contributing to backend logic, code optimization, and feature implementation for production systems."
+    }
+  ],
+  "education": [
+    {
+      "institution": "GIFT Autonomus",
+      "degree": "B.Tech (CSE)",
+      "year": "2026",
+      "gpa": "9.2"
+    }
+  ],
+  "skills": [
+    "Python",
+    "Java",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "AI/ML"
+  ],
+  "projects": [
+    {
+      "name": "Amazon Clone Web App",
+      "description": "Built a full-stack Amazon clone web application with user authentication, product listings, cart functionality, and payment integration, simulating real-time e-commerce workflows.",
+      "technologies": "HTML, CSS, JS",
+      "url": ""
+    }
+  ],
+  "certifications": [],
+  "languages": [
+    {
+      "name": "Odia",
+      "proficiency": "Native"
+    },
+    {
+      "name": "English",
+      "proficiency": "Fluent"
+    },
+    {
+      "name": "Hindi",
+      "proficiency": "Intermediate"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "personal_info": {
+    "full_name": "John Doe",
+    "email": "john.doe@email.com",
+    "phone": "+1-555-0123",
+    "location": "New York, NY",
+    "linkedin": "https://www.linkedin.com/in/hitesh-mohanty8/",
+    "github": "https://github.com/Mohanty-Hitesh-4495/",
+    "summary": "Experienced software developer with 5+ years in full-stack development..."
+  },
+  "experience": [
+    {
+      "company": "Tech Solutions Inc.",
+      "position": "Senior Developer",
+      "start_date": "2022-01",
+      "end_date": "Present",
+      "description": "Led development of web applications using React and Python..."
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Technology",
+      "degree": "Bachelor of Computer Science",
+      "year": "2019",
+      "gpa": "3.8"
+    }
+  ],
+  "skills": [
+    "Python",
+    "JavaScript",
+    "React",
+    "Node.js",
+    "SQL"
+  ],
+  "projects": [
+    {
+      "name": "E-commerce Platform",
+      "description": "Built a full-stack e-commerce platform...",
+      "technologies": "React, Node.js, MongoDB"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Developer",
+      "issuer": "Amazon Web Services",
+      "date": "2023-01",
+      "credential_id": "AWS-123456"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Spanish",
+      "proficiency": "Intermediate"
+    }
+  ]
+}

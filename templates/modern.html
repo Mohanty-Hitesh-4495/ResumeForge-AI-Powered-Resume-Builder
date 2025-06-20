@@ -305,6 +305,18 @@
         transform: none;
         box-shadow: none;
       }
+      
+      .section-content,
+      .experience-item,
+      .project-item,
+      .education-item,
+      .certification-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .main, .left, .right, .content, .container {
+        display: block !important;
+      }
     }
     
     /* Responsive design */

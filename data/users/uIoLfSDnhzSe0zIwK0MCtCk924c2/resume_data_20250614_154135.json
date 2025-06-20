@@ -1,0 +1,50 @@
+{
+  "personal_info": {
+    "full_name": "Mohanty Hitesh Rabindranath",
+    "email": "mohantyhitesh4495@gmail.com",
+    "phone": "7205374495",
+    "location": "Bhubaneswar, Odisha",
+    "linkedin": "https://www.linkedin.com/in/hitesh-mohanty8/",
+    "github": "https://www.linkedin.com/in/hitesh-mohanty8/"
+  },
+  "experience": [
+    {
+      "company": "Tata Groups, Mumbai",
+      "position": "AI Intern",
+      "start_date": "2025-02",
+      "end_date": "2025-05",
+      "description": ""
+    }
+  ],
+  "education": [
+    {
+      "institution": "GIFT Autonomous, Bhubaneswar",
+      "degree": "B.Tech in Computer Science Engineering",
+      "year": "2026",
+      "gpa": "9.14/10"
+    }
+  ],
+  "skills": [
+    "Python"
+  ],
+  "projects": [],
+  "certifications": [
+    {
+      "name": "NPTEL Discipline Star",
+      "issuer": "SWAYAM NPTEL (IIT Madras)",
+      "date": "2025-05",
+      "credential_id": ""
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Fluent"
+    },
+    {
+      "name": "Hindi",
+      "proficiency": "Native"
+    }
+  ],
+  "timestamp": "2025-06-14 15:41"
+}

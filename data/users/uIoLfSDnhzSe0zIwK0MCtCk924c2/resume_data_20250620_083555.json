@@ -1,0 +1,65 @@
+{
+  "projects": [
+    {
+      "name": "AI-Powered Resume Builder",
+      "description": "Built an AI-powered resume builder with Firebase authentication, enabling users to create, update, and generate professional resumes from stored profile data. Integrated Firestore for real-time data storage and Streamlit for interactive frontend.",
+      "technologies": "Python, Langchain, Groq, Firebase, Weasyprint",
+      "url": ""
+    }
+  ],
+  "certifications": [],
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Hindi",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Odia",
+      "proficiency": "Intermediate"
+    },
+    {
+      "name": "Gujarati",
+      "proficiency": "Fluent"
+    }
+  ],
+  "education": [
+    {
+      "gpa": "9.14",
+      "year": "2026",
+      "institution": "GIFT Autonomous, Bhubaneswar",
+      "degree": "B.Tech in Computer Science and Engineering"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Tata Group, Mumbai",
+      "description": "Developed multi-agent AI systems and backend services for a financial analytics platform using FastAPI, LangChain, and LLMs.\nContributed to automation, intelligent reporting, and research tools for enhanced decision-making.",
+      "start_date": "February 2025",
+      "position": "AI Intern (Remote)",
+      "end_date": "May 2025"
+    }
+  ],
+  "skills": [
+    "Python",
+    "Java",
+    "Gen-AI",
+    "SQL",
+    "Langchain",
+    "Autogen",
+    "Github",
+    "AI/ML"
+  ],
+  "personal_info": {
+    "github": "https://github.com/Mohanty-Hitesh-4495/",
+    "location": "Bhubaneswar, Odisha",
+    "phone": "7205374495",
+    "summary": "I'm a skilled technologist, however, the provided text doesn't include specific skills for Mohanty Hitesh Rabindranath. To generate a profile summary, I would need the skills associated with this individual. \n\nIf you could provide the skills for Mohanty Hitesh Rabindranath, I can assist in crafting a 40-50 word profile summary in a first-person tone, focusing on core technical strengths and role-relevant capabilities.",
+    "linkedin": "https://www.linkedin.com/in/hitesh-mohanty8/",
+    "full_name": "Mohanty Hitesh Rabindranath",
+    "email": "mohantyhitesh4495@gmail.com"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "projects": [
+    {
+      "name": "AI-Powered Resume Builder",
+      "description": "Built an AI-powered resume builder with Firebase authentication, enabling users to create, update, and generate professional resumes from stored profile data. Integrated Firestore for real-time data storage and Streamlit for interactive frontend.",
+      "technologies": "Python, Langchain, Groq, Firebase, Weasyprint",
+      "url": "https://github.com/Mohanty-Hitesh-4495/ResumeForge-AI-Powered-Resume-Builder"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Deep Learning NPTEL Course",
+      "issuer": "SWAYAM NPTEL (IIT Roper)",
+      "date": "2025-05",
+      "credential_id": ""
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Hindi",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Odia",
+      "proficiency": "Intermediate"
+    },
+    {
+      "name": "Gujarati",
+      "proficiency": "Fluent"
+    }
+  ],
+  "education": [
+    {
+      "institution": "GIFT Autonomous, Bhubaneswar",
+      "degree": "B.Tech in Computer Science and Engineering",
+      "year": "2026",
+      "gpa": "9.14"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Tata Group, Mumbai",
+      "position": "AI Intern (Remote)",
+      "start_date": "2025-02",
+      "end_date": "2025-05",
+      "description": "Developed multi-agent AI systems and backend services for a financial analytics platform using FastAPI, LangChain, and LLMs.\nContributed to automation, intelligent reporting, and research tools for enhanced decision-making."
+    }
+  ],
+  "skills": [
+    "Python",
+    "Java",
+    "Machine Learning",
+    "Deep Learning",
+    "Gen-AI",
+    "SQL",
+    "Langchain",
+    "Autogen",
+    "Github"
+  ],
+  "personal_info": {
+    "github": "https://github.com/Mohanty-Hitesh-4495/",
+    "location": "Bhubaneswar, Odisha",
+    "phone": "7205374495",
+    "summary": "Experienced software developer with 5+ years in full-stack development...",
+    "linkedin": "https://www.linkedin.com/in/hitesh-mohanty8/",
+    "full_name": "Mohanty Hitesh Rabindranath",
+    "email": "mohantyhitesh4495@gmail.com"
+  }
+}
