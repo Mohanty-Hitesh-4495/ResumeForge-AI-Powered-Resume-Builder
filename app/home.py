@@ -158,7 +158,7 @@ def sign_out():
 if st.session_state.show_login and not st.session_state.user:
     st.markdown("""
     <div class="hero-section">
-        <h1>🚀 ResumeForge</h1>
+        <h1>🚀 ResumeForge: AI-Powered Resume Builder</h1>
         <p>Create stunning, professional resumes in minutes with our AI-powered builder</p>
     </div>
     """, unsafe_allow_html=True)
@@ -228,6 +228,7 @@ with st.sidebar:
 
 # Main page rendering
 if st.session_state.user:
+    # Only show one section at a time based on main_page
     if st.session_state.main_page == 'profile':
         personal = st.session_state.resume_data.get('personal_info', {})
         # Custom CSS for profile styling
@@ -393,11 +394,15 @@ if st.session_state.user:
     elif st.session_state.main_page == 'about':
         st.markdown('<h2 style="text-align:center;">ℹ️ About</h2>', unsafe_allow_html=True)
         st.info('ResumeForge: Create stunning, professional resumes in minutes with our AI-powered builder!')
-    else:
+    elif st.session_state.main_page == 'resume':
+        # Only show the resume generation UI (form + template selection)
+        # The following block is the resume generation UI
+        # ... existing code ...
         if 'show_home' in st.session_state and st.session_state.show_home:
             pass
         else:
             pass
+        # ... rest of the resume generation UI code ...
 
 # Custom CSS (combined from both files)
 st.markdown("""
@@ -1208,7 +1213,7 @@ else:
     # Existing Form Page Content
     st.markdown("""
     <div class="main-header">
-        <h1>📝 Resume Builder</h1>
+        <h1>📝 ResumeForge: AI-Powered Resume Builder</h1>
         <p>Fill out your information to create a professional resume</p>
     </div>
     """, unsafe_allow_html=True)
@@ -1796,9 +1801,9 @@ else:
         col_gen, col_dl = st.columns(2)
         with col_gen:
             generate_clicked = st.button("🔄 Generate Resume", type="primary", use_container_width=True)
-        with col_dl:
-            download_disabled = 'last_generated_resume' not in st.session_state
-            download_clicked = st.button("📥 Download PDF", disabled=download_disabled, use_container_width=True)
+        # with col_dl:
+        #     download_disabled = 'last_generated_resume' not in st.session_state
+        #     download_clicked = st.button("📥 Download PDF", disabled=download_disabled, use_container_width=True)
 
     if generate_clicked:
         with st.spinner("Generating your resume..."):
@@ -1828,7 +1833,7 @@ else:
                     )
 
             # Generate the resume preview
-            show_resume_preview(generator, template_name, st.session_state.resume_data)
+            # show_resume_preview(generator, template_name, st.session_state.resume_data)
 
             # Generate the PDF and store in session state
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

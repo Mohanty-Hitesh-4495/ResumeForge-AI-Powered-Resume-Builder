@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{{ personal_info.full_name }} - Resume</title>
+  <title>Mohanty Hitesh Rabindranath - Resume</title>
   <style>
     /* * {
       box-sizing: border-box;
@@ -153,15 +153,12 @@
     .main {
       flex-direction: column !important;
       gap: 0 !important;
-      display: block !important;
     }
     .left, .right {
       margin: 0 !important;
       padding: 0 !important;
       border: none !important;
       background: none !important;
-      width: 100% !important;
-      display: block !important;
     }
   }
   </style>
@@ -170,18 +167,16 @@
   <div class="container">
     <div class="resume-body">
       <div class="header">
-        {% if personal_info.profile_pic %}
-        <img src="{{ personal_info.profile_pic }}" alt="Profile Picture" class="profile-pic">
-        {% endif %}
-        <h1>{{ personal_info.full_name }}</h1>
+        
+        <h1>Mohanty Hitesh Rabindranath</h1>
         <div class="contact">
-          {{ personal_info.email }}
+          mohantyhitesh4495@gmail.com
           <span class="contact-separator">•</span>
-          {{ personal_info.phone }}
-          {% if personal_info.location %}
+          7205374495
+          
           <span class="contact-separator">•</span>
-          {{ personal_info.location }}
-          {% endif %}
+          Bhubaneswar, Odisha
+          
         </div>
       </div>
       
@@ -190,90 +185,110 @@
           <div class="section-content">
             <h2>Skills</h2>
             <ul>
-              {% for skill in skills %}
-              <li>{{ skill }}</li>
-              {% endfor %}
+              
+              <li>Python</li>
+              
+              <li>Java</li>
+              
+              <li>Gen-AI</li>
+              
+              <li>SQL</li>
+              
+              <li>Langchain</li>
+              
+              <li>Autogen</li>
+              
+              <li>Github</li>
+              
+              <li>AI/ML</li>
+              
             </ul>
           </div>
           
           <div class="section-content">
             <h2>Education</h2>
-            {% for edu in education %}
+            
             <div class="education-item education-details">
-              <div class="item-title">{{ edu.degree }}</div>
-              <div class="item-subtitle">{{ edu.institution }}</div>
-              {% if edu.year or edu.gpa %}
+              <div class="item-title">B.Tech in Computer Science and Engineering</div>
+              <div class="item-subtitle">GIFT Autonomous, Bhubaneswar</div>
+              
               <div style="font-size: 13px; margin-top: 3px;">
-                {% if edu.year %}{{ edu.year }}{% endif %}
-                {% if edu.year and edu.gpa %} • {% endif %}
-                {% if edu.gpa %}<span class="gpa">GPA: {{ edu.gpa }}</span>{% endif %}
+                2026
+                 • 
+                <span class="gpa">GPA: 9.14</span>
               </div>
-              {% endif %}
+              
             </div>
-            {% endfor %}
+            
           </div>
           
-          {% if languages %}
+          
           <div class="section-content">
             <h2>Languages</h2>
             <ul>
-              {% for lang in languages %}
-              <li>{{ lang.name }} <em>({{ lang.proficiency }})</em></li>
-              {% endfor %}
+              
+              <li>English <em>(Native)</em></li>
+              
+              <li>Hindi <em>(Native)</em></li>
+              
+              <li>Odia <em>(Intermediate)</em></li>
+              
+              <li>Gujarati <em>(Fluent)</em></li>
+              
             </ul>
           </div>
-          {% endif %}
+          
         </div>
         
         <div class="right">
-          {% if personal_info.summary %}
+          
           <div class="section-content">
             <h2>Professional Summary</h2>
-            <div class="profile-summary">{{ personal_info.summary }}</div>
+            <div class="profile-summary">I'm a skilled technologist, but the provided skills are empty. Please provide the skills for Mohanty Hitesh Rabindranath so I can generate a first-person profile summary.</div>
           </div>
-          {% endif %}
+          
           
           <div class="section-content">
             <h2>Professional Experience</h2>
-            {% for exp in experience %}
+            
             <div class="experience-item">
-              <div class="item-title">{{ exp.position }}</div>
-              <div class="item-subtitle">{{ exp.company }} • {{ exp.start_date }} - {{ exp.end_date }}</div>
-              <div class="item-description">{{ exp.description }}</div>
+              <div class="item-title">AI Intern (Remote)</div>
+              <div class="item-subtitle">Tata Group, Mumbai • February 2025 - May 2025</div>
+              <div class="item-description">Developed multi-agent AI systems and backend services for a financial analytics platform using FastAPI, LangChain, and LLMs.
+Contributed to automation, intelligent reporting, and research tools for enhanced decision-making.</div>
             </div>
-            {% endfor %}
+            
+            <div class="experience-item">
+              <div class="item-title">AI & Data Science Intern</div>
+              <div class="item-subtitle">NIT Rourkela • March 2025 - June 2025</div>
+              <div class="item-description">- Developed AI models using Python, TensorFlow, and scikit-learn, analyzing large datasets.
+- Improved data processing efficiency by 25% using Apache Spark and pandas.</div>
+            </div>
+            
           </div>
           
-          {% if projects %}
+          
           <div class="section-content">
             <h2>Notable Projects</h2>
-            {% for project in projects %}
+            
             <div class="project-item">
-              <div class="item-title">{{ project.name }}</div>
-              <div class="item-description">{{ project.description }}</div>
-              <div class="project-tech"><strong>Technologies:</strong> {{ project.technologies }}</div>
-              {% if project.url %}
-              <a href="{{ project.url }}" class="project-url" target="_blank">{{ project.url }}</a>
-              {% endif %}
+              <div class="item-title">AI-Powered Resume Builder</div>
+              <div class="item-description">Built an AI-powered resume builder with Firebase authentication, enabling users to create, update, and generate professional resumes from stored profile data. Integrated Firestore for real-time data storage and Streamlit for interactive frontend.</div>
+              <div class="project-tech"><strong>Technologies:</strong> Python, Langchain, Groq, Firebase, Weasyprint</div>
+              
             </div>
-            {% endfor %}
+            
+            <div class="project-item">
+              <div class="item-title">Crop and Fertilizer Recommendation System</div>
+              <div class="item-description">Developed an AI-powered web application 'FarmSathi' for crop, fertilizer, and pesticide recommendation, integrating machine learning and deep learning for precision farming and disease detection.</div>
+              <div class="project-tech"><strong>Technologies:</strong> Python, Streamlit, Scikit-learn, Machine Learning</div>
+              
+            </div>
+            
           </div>
-          {% endif %}
           
-          {% if certifications %}
-          <div class="section-content">
-            <h2>Certifications</h2>
-            {% for cert in certifications %}
-            <div class="certification-item">
-              <div class="item-title">{{ cert.name }}</div>
-              <div class="item-subtitle">{{ cert.issuer }} • {{ cert.date }}</div>
-              {% if cert.credential_id %}
-              <div class="credential-id">Credential ID: {{ cert.credential_id }}</div>
-              {% endif %}
-            </div>
-            {% endfor %}
-          </div>
-          {% endif %}
+          
+          
         </div>
       </div>
     </div>

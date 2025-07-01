@@ -1,0 +1,263 @@
+<!-- minimalist.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohanty Hitesh Rabindranath - Resume</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      font-size: 13px;
+      color: #222;
+    }
+  
+    .container {
+      max-width: 780px;
+      margin: auto;
+      padding: 25px 30px;
+    }
+  
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      margin: 0;
+    }
+  
+    .contact {
+      font-size: 13px;
+      color: #555;
+      margin-top: 6px;
+    }
+  
+    h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 3px;
+      text-transform: uppercase;
+    }
+  
+    .section {
+      margin-bottom: 20px;
+    }
+  
+    .item {
+      margin-bottom: 10px;
+    }
+  
+    .item-title {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+  
+    .item-subtitle {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 3px;
+    }
+  
+    .item-content {
+      line-height: 1.4;
+      text-align: justify;
+    }
+  
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 5px;
+    }
+  
+    .skill {
+      background: #f1f1f1;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+  
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+  
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+      }
+  
+      .container {
+        box-shadow: none;
+        padding: 20px;
+      }
+  
+      .header, .section, .item {
+        page-break-inside: avoid;
+      }
+  
+      .skills {
+        gap: 4px;
+      }
+      .section-content,
+      .experience-item,
+      .project-item,
+      .education-item,
+      .certification-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .main, .left, .right, .content, .container {
+        display: block !important;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+  
+      h1 {
+        font-size: 22px;
+      }
+  
+      h2 {
+        font-size: 14px;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      
+      <h1>Mohanty Hitesh Rabindranath</h1>
+      <div class="contact">
+        mohantyhitesh4495@gmail.com | 7205374495
+         | Bhubaneswar, Odisha
+      </div>
+    </div>
+
+    
+    <div class="section">
+      <h2>Profile</h2>
+      <div class="item-content">You haven't provided the skills for Mohanty Hitesh Rabindranath. Please provide the skills to generate a first-person profile summary. I'll be happy to assist you once I have the necessary information.</div>
+    </div>
+    
+
+    <div class="section">
+      <h2>Experience</h2>
+      
+      <div class="item">
+        <div class="item-title">AI Intern (Remote)</div>
+        <div class="item-subtitle">Tata Group, Mumbai | February 2025 - May 2025</div>
+        <div class="item-content">Developed multi-agent AI systems and backend services for a financial analytics platform using FastAPI, LangChain, and LLMs.
+Contributed to automation, intelligent reporting, and research tools for enhanced decision-making.</div>
+      </div>
+      
+      <div class="item">
+        <div class="item-title">AI & Data Science Intern</div>
+        <div class="item-subtitle">NIT Rourkela | March 2025 - June 2025</div>
+        <div class="item-content">- Developed AI models using Python, TensorFlow, and scikit-learn, analyzing large datasets.
+- Improved data processing efficiency by 25% using Apache Spark and pandas.</div>
+      </div>
+      
+    </div>
+
+    <div class="section">
+      <h2>Education</h2>
+      
+      <div class="item">
+        <div class="item-title">B.Tech in Computer Science and Engineering</div>
+        <div class="item-subtitle">GIFT Autonomous, Bhubaneswar
+           | 2026
+           | GPA: 9.14
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="section">
+      <h2>Skills</h2>
+      <div class="skills">
+        
+        <span class="skill">Python</span>
+        
+        <span class="skill">Java</span>
+        
+        <span class="skill">Gen-AI</span>
+        
+        <span class="skill">SQL</span>
+        
+        <span class="skill">Langchain</span>
+        
+        <span class="skill">Autogen</span>
+        
+        <span class="skill">Github</span>
+        
+        <span class="skill">AI/ML</span>
+        
+      </div>
+    </div>
+
+    
+    <div class="section">
+      <h2>Projects</h2>
+      
+      <div class="item">
+        <div class="item-title">AI-Powered Resume Builder</div>
+        <div class="item-content">
+          Built an AI-powered resume builder with Firebase authentication, enabling users to create, update, and generate professional resumes from stored profile data. Integrated Firestore for real-time data storage and Streamlit for interactive frontend.<br/>
+          <em>Technologies: Python, Langchain, Groq, Firebase, Weasyprint</em>
+          
+        </div>
+      </div>
+      
+      <div class="item">
+        <div class="item-title">Crop and Fertilizer Recommendation System</div>
+        <div class="item-content">
+          Developed an AI-powered web application 'FarmSathi' for crop, fertilizer, and pesticide recommendation, integrating machine learning and deep learning for precision farming and disease detection.<br/>
+          <em>Technologies: Python, Streamlit, Scikit-learn, Machine Learning</em>
+          
+        </div>
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="section">
+      <h2>Languages</h2>
+      <div class="skills">
+        
+        <span class="skill">English (Native)</span>
+        
+        <span class="skill">Hindi (Native)</span>
+        
+        <span class="skill">Odia (Intermediate)</span>
+        
+        <span class="skill">Gujarati (Fluent)</span>
+        
+      </div>
+    </div>
+    
+
+    
+  </div>
+</body>
+</html>

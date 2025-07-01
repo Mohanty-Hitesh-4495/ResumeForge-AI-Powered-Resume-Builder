@@ -134,7 +134,7 @@ def show_resume_preview(generator: ResumeGenerator, template_name: str, resume_d
             height=800,
             scrolling=True
         )
-
+        
     except Exception as e:
         st.error(f"Error in resume generation: {str(e)}")
 
