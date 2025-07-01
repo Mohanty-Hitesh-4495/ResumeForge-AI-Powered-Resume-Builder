@@ -8,6 +8,6 @@ groq>=0.4.2
 pyrebase4==4.7.1
 setuptools<81.0.0
 firebase-admin==6.4.0
-requests==2.31.0
+requests==2.29.0
 gcloud==0.18.3
 oauth2client==4.1.3
