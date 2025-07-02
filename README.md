@@ -1,19 +1,27 @@
-# ResumeForge - AI-Powered Resume Builder
+<div align="center">
+  <h1> ResumeForge: AI-Powered Resume Builder </h1>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Groq-412991?style=for-the-badge&logo=groq&logoColor=white" />
+  <img src="https://img.shields.io/badge/langchain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" />
+  <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
+  <img src="https://img.shields.io/badge/jinja-white.svg?style=for-the-badge&logo=jinja&logoColor=black" />
+  <img src="https://img.shields.io/badge/Streamlit-%23FE4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white" />
 
-ResumeForge is an intelligent resume builder that helps you create professional resumes with AI-powered suggestions and beautiful templates.
+  <h3>ResumeForge is an intelligent resume builder that helps you create professional resumes with AI-powered suggestions and beautiful templates. 🚀</h3>
+</div>
 
 ## Features
 
-- 📝 Smart Resume Builder with intuitive form interface
-- 🎨 Multiple professional templates (Classic, Modern, Minimalist)
-- 🤖 AI-powered content suggestions using Groq
-- 💾 Easy export to PDF
-- 🔄 Real-time preview
-- 💾 Automatic backup system
+- Smart Resume Builder with intuitive form interface
+- Multiple professional templates (Classic, Modern, Minimalist)
+- AI-powered content suggestions using Groq
+- Easy export to PDF
+- Real-time preview
+- Automatic backup system
 
 ## Prerequisites
 
-- Python 3.8 or higher
+- Python 3.12 or higher
 - pip (Python package installer)
 - A Groq API key (for AI features)
 
@@ -21,15 +29,15 @@ ResumeForge is an intelligent resume builder that helps you create professional 
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Mohanty-Hitesh-4495/ResumeForge-AI-Powered-Resume-Builder.git
 cd resume_builder
 ```
 
 2. Create a virtual environment (recommended):
 ```bash
 # Windows
-python -m venv venv
-venv\Scripts\activate
+python -m venv myenv
+myenv\Scripts\activate
 
 # Linux/Mac
 python3 -m venv venv
@@ -112,4 +120,4 @@ If you encounter any issues:
 
 ## License
 
-[Your License Here] 
+This project is licensed under the MIT License - see the [MIT LICENSE](https://github.com/Mohanty-Hitesh-4495/ResumeForge-AI-Powered-Resume-Builder/blob/main/LICENSE) file for details.
