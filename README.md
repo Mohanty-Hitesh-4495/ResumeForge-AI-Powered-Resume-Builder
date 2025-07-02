@@ -10,6 +10,12 @@
   <h3>ResumeForge is an intelligent resume builder that helps you create professional resumes with AI-powered suggestions and beautiful templates. 🚀</h3>
 </div>
 
+## Motivation
+Building an effective resume can be time-consuming and challenging, especially for students and job seekers unfamiliar with formatting and content optimization. This project was motivated by the need for an AI-powered, user-friendly platform that simplifies resume creation, ensuring personalized and professional outputs.
+
+## Overview
+This AI-powered Resume Builder allows users to create, edit, and manage their resume profiles with Firebase authentication and Firestore data storage. The platform offers agent-curated summaries, customizable templates, and PDF downloads.
+
 ## Features
 
 - Smart Resume Builder with intuitive form interface
@@ -109,14 +115,13 @@ streamlit run app/Home.py
 - Generated resumes are saved in the `output` directory
 - Preview files are stored in the `preview` directory
 
-## Troubleshooting
+## Contributing
 
-If you encounter any issues:
-
-1. Make sure all dependencies are installed correctly
-2. Verify your Groq API key is valid and properly set in the `.env` file
-3. Check that all required directories exist (assets, backups, output, preview)
-4. Ensure you have write permissions in the application directory
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
