@@ -2,57 +2,70 @@ import streamlit as st
 import firebase_admin
 from firebase_admin import credentials, firestore
 import pyrebase
-import json
 import os
+from dotenv import load_dotenv
 
-# Optional: For local development only
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except:
-    pass
+
+# Load environment variables from .env file
+load_dotenv()
 
 def clean_database_url(url: str) -> str:
-    """Ensure the Firebase Realtime Database URL is well-formatted."""
-    if url:
-        url = url.rstrip('/')
-        if not url.startswith('https://'):
-            url = 'https://' + url
+    """Clean and validate the database URL."""
+    if not url:
+        return url
+    # Remove trailing slash if present
+    url = url.rstrip('/')
+    # Ensure URL starts with https://
+    if not url.startswith('https://'):
+        url = 'https://' + url
     return url
 
-# --------- Load Firebase Client Config (for Pyrebase) ---------
+# Firebase configuration using environment variables
 firebaseConfig = {
-    "apiKey": os.getenv("FIREBASE_API_KEY") or st.secrets["firebase_client"]["apiKey"],
-    "authDomain": os.getenv("FIREBASE_AUTH_DOMAIN") or st.secrets["firebase_client"]["authDomain"],
-    "projectId": os.getenv("FIREBASE_PROJECT_ID") or st.secrets["firebase_client"]["projectId"],
-    "storageBucket": os.getenv("FIREBASE_STORAGE_BUCKET") or st.secrets["firebase_client"]["storageBucket"],
-    "messagingSenderId": os.getenv("FIREBASE_MESSAGING_SENDER_ID") or st.secrets["firebase_client"]["messagingSenderId"],
-    "appId": os.getenv("FIREBASE_APP_ID") or st.secrets["firebase_client"]["appId"],
-    "databaseURL": clean_database_url(os.getenv("FIREBASE_DATABASE_URL") or st.secrets["firebase_client"]["databaseURL"])
+    "apiKey": os.getenv("FIREBASE_API_KEY"),
+    "authDomain": os.getenv("FIREBASE_AUTH_DOMAIN"),
+    "projectId": os.getenv("FIREBASE_PROJECT_ID"),
+    "storageBucket": os.getenv("FIREBASE_STORAGE_BUCKET"),
+    "messagingSenderId": os.getenv("FIREBASE_MESSAGING_SENDER_ID"),
+    "appId": os.getenv("FIREBASE_APP_ID"),
+    "databaseURL": os.getenv("FIREBASE_DATABASE_URL")  # Required by Pyrebase
 }
 
-# --------- Validate required fields ---------
+# Validate that all required environment variables are set
 required_vars = [
-    "apiKey", "authDomain", "projectId", "storageBucket",
-    "messagingSenderId", "appId", "databaseURL"
+    "FIREBASE_API_KEY",
+    "FIREBASE_AUTH_DOMAIN",
+    "FIREBASE_PROJECT_ID",
+    "FIREBASE_STORAGE_BUCKET",
+    "FIREBASE_MESSAGING_SENDER_ID",
+    "FIREBASE_APP_ID",
+    "FIREBASE_DATABASE_URL"  # Added back to required vars
 ]
-missing_vars = [key for key in required_vars if not firebaseConfig.get(key)]
-if missing_vars:
-    raise ValueError(f"Missing required Firebase client config fields: {', '.join(missing_vars)}")
 
-# --------- Initialize Firebase Admin SDK (for Firestore) ---------
+missing_vars = [var for var in required_vars if not os.getenv(var)]
+if missing_vars:
+    raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}")
+
+# Initialize Firebase Admin SDK only if not already initialized
 if not firebase_admin._apps:
     try:
-        service_account_info = dict(st.secrets["service_account"])
-        cred = credentials.Certificate(service_account_info)
+        cred = credentials.Certificate("serviceAccountKey.json")
+
+
+
         firebase_admin.initialize_app(cred)
     except Exception as e:
         print(f"Error initializing Firebase Admin SDK: {str(e)}")
         raise
 
-# --------- Firestore Client ---------
+# Initialize Firestore client
 try:
     db = firestore.client()
 except Exception as e:
     print(f"Error initializing Firestore client: {str(e)}")
     raise
+
+# Initialize Pyrebase for authentication
+firebase = pyrebase.initialize_app(firebaseConfig)
+auth = firebase.auth()
+storage = firebase.storage()
