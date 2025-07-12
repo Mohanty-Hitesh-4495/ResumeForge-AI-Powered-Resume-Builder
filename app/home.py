@@ -691,8 +691,8 @@ st.markdown("""
         overflow-wrap: break-word;
     }
     .feature-icon {
-        font-size: 1.6rem; /* Reduced from 2rem */
-        margin-bottom: 0.6rem; /* Reduced from 0.8rem */
+        font-size: 1.2rem; /* Further reduced icon size */
+        margin-bottom: 0.3rem; /* Further reduced margin */
         background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -931,9 +931,9 @@ if st.session_state.show_home:
         
         .hero-section {
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            padding: 1.5rem; /* Reduced padding */
+            padding: 0.8rem; /* Further reduced padding */
             border-radius: 12px;
-            margin: 0.5rem auto; /* Reduced margin */
+            margin: 0.2rem auto; /* Further reduced margin */
             text-align: center;
             color: white;
             box-shadow: 0 4px 12px rgba(106, 17, 203, 0.15);
@@ -942,16 +942,16 @@ if st.session_state.show_home:
         }
         
         .hero-section h1 {
-            font-size: 2.2rem; /* Slightly reduced font size */
+            font-size: 1.5rem; /* Further reduced font size */
             font-weight: 800;
-            margin-bottom: 0.6rem; /* Reduced margin */
+            margin-bottom: 0.3rem; /* Further reduced margin */
         }
         
         .hero-section p {
-            font-size: 1rem; /* Slightly reduced font size */
+            font-size: 0.85rem; /* Further reduced font size */
             opacity: 0.9;
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.4;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -994,8 +994,8 @@ if st.session_state.show_home:
         }
 
         .feature-icon {
-            font-size: 1.8rem; /* Slightly reduced icon size */
-            margin-bottom: 0.5rem; /* Reduced margin */
+            font-size: 1.2rem; /* Further reduced icon size */
+            margin-bottom: 0.3rem; /* Further reduced margin */
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -1213,7 +1213,7 @@ else:
     # Existing Form Page Content
     st.markdown("""
     <div class="main-header">
-        <h1>📝 ResumeForge: AI-Powered Resume Builder</h1>
+        <h1>📝 ResumeForge</h1>
         <p>Fill out your information to create a professional resume</p>
     </div>
     """, unsafe_allow_html=True)
@@ -1421,7 +1421,8 @@ else:
             for i, exp in enumerate(st.session_state.resume_data['experience']):
                 with st.expander(f"📍 {exp.get('position', 'Position')} at {exp.get('company', 'Company')}", expanded=False):
                     st.write(f"**Duration:** {exp.get('start_date', 'N/A')} - {exp.get('end_date', 'N/A')}")
-                    st.write(f"**Description:** {exp.get('description', 'N/A')}")
+                    st.write(f"**Technologies:** {exp.get('technologies', 'N/A')}")
+                    st.write(f"**Description:** {exp.get('description', 'Will be generated automatically')}")
                     if st.button(f"🗑️ Remove", key=f"remove_exp_{i}"):
                         st.session_state.resume_data['experience'].pop(i)
                         st.rerun()
@@ -1439,18 +1440,18 @@ else:
                     start_date = st.text_input("Start Date *", placeholder="YYYY-MM or YYYY", key="new_start_date")
                     end_date = st.text_input("End Date", placeholder="YYYY-MM, YYYY, or 'Present'", key="new_end_date")
                 
-                description = st.text_area("Job Description *", 
-                                         placeholder="Describe your responsibilities and achievements...",
-                                         height=100, key="new_description")
+                technologies = st.text_input("Technologies Used *", placeholder="Python, SQL, React", key="new_exp_technologies")
+                st.info("Job description will be generated automatically using AI based on your role and technologies.")
                 
                 if st.button("➕ Add Experience", type="primary"):
-                    if company and position and start_date:
+                    if company and position and start_date and technologies:
                         new_exp = {
                             'company': company,
                             'position': position,
                             'start_date': start_date,
                             'end_date': end_date or 'Present',
-                            'description': description
+                            'technologies': technologies,
+                            'description': ""  # Will be generated
                         }
                         st.session_state.resume_data['experience'].append(new_exp)
                         st.success("✅ Experience added successfully!")
@@ -1572,7 +1573,7 @@ else:
                 st.markdown("#### ➕ Add New Project")
                 
                 project_name = st.text_input("Project Name *", key="new_project_name")
-                project_desc = st.text_area("Project Description *", 
+                project_desc = st.text_area("Project Description (Optional - AI will generate if left empty)", 
                                            placeholder="Describe what the project does and your role...",
                                            height=100, key="new_project_desc")
                 
@@ -1588,7 +1589,7 @@ else:
                     if project_name and technologies:
                         new_project = {
                             'name': project_name,
-                            'description': project_desc,
+                            'description': project_desc if project_desc.strip() else "",
                             'technologies': technologies,
                             'url': project_url
                         }
@@ -1765,8 +1766,8 @@ else:
                         st.json(st.session_state.resume_data)
 
     # Template Selection and Resume Generation Section
-    st.markdown("---")
-    st.markdown('<h2 class="section-header">📄 Resume Generation</h2>', unsafe_allow_html=True)
+    # st.markdown("---")
+    # st.markdown('<h2 class="section-header">📄 Resume Generation</h2>', unsafe_allow_html=True)
 
     # Import the resume generator
     from resume_generator import ResumeGenerator, show_resume_preview
@@ -1775,8 +1776,7 @@ else:
     generator = ResumeGenerator()
 
     # Create a single column for template selection and controls
-    st.markdown("#### 🎨 Choose Template")
-
+    st.markdown("#### 🎨 Choose Template for Resume Generation")
     # Template selection with preview cards
     template_name = st.radio(
         "Select a template style:",
@@ -1798,38 +1798,45 @@ else:
     # Create a container for the generate and download buttons
     button_container = st.container()
     with button_container:
-        col_gen, col_dl = st.columns(2)
+        col_gen, col_regenerate, col_dl = st.columns([2, 1, 1])
         with col_gen:
             generate_clicked = st.button("🔄 Generate Resume", type="primary", use_container_width=True)
+        with col_regenerate:
+            regenerate_clicked = st.button("🔄 Regenerate All", use_container_width=True)
         # with col_dl:
         #     download_disabled = 'last_generated_resume' not in st.session_state
         #     download_clicked = st.button("📥 Download PDF", disabled=download_disabled, use_container_width=True)
 
-    if generate_clicked:
+    if generate_clicked or regenerate_clicked:
         with st.spinner("Generating your resume..."):
             from summarizer_agent import generate_profile_summary, generate_project_description, generate_job_description
 
-            # Generate profile summary
+            # Generate profile summary (regenerate if regenerate_clicked, otherwise only if empty)
             if st.session_state.resume_data['personal_info']:
                 personal_info = st.session_state.resume_data['personal_info']
-                personal_info['summary'] = generate_profile_summary(personal_info)
+                if regenerate_clicked or not personal_info.get('summary') or personal_info.get('summary', '').strip() == '':
+                    skills = st.session_state.resume_data.get('skills', [])
+                    experience = st.session_state.resume_data.get('experience', [])
+                    education = st.session_state.resume_data.get('education', [])
+                    personal_info['summary'] = generate_profile_summary(personal_info, skills, experience, education)
 
-            # Generate project descriptions
+            # Generate project descriptions (regenerate if regenerate_clicked, otherwise only if empty)
             for project in st.session_state.resume_data['projects']:
-                if not project.get('description'):
+                if regenerate_clicked or not project.get('description') or project.get('description', '').strip() == '':
                     project['description'] = generate_project_description(
                         project['name'],
                         project['technologies'].split(', ')
                     )
 
-            # Generate job descriptions
+            # Generate job descriptions (regenerate if regenerate_clicked, otherwise only if empty)
             for exp in st.session_state.resume_data['experience']:
-                if not exp.get('description'):
+                if regenerate_clicked or not exp.get('description') or exp.get('description', '').strip() == '':
                     exp['description'] = generate_job_description(
                         exp['company'],
                         exp['position'],
                         exp['start_date'],
-                        exp['end_date']
+                        exp['end_date'],
+                        exp.get('technologies', '')
                     )
 
             # Generate the resume preview
