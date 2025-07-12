@@ -1,0 +1,78 @@
+{
+  "projects": [
+    {
+      "name": "AI-Powered Resume Builder",
+      "url": "",
+      "technologies": "Python, Streamlit, Firebase, Groq API",
+      "description": ""
+    },
+    {
+      "name": "Crop and Fertilizer Recommendation System",
+      "url": "",
+      "technologies": "Python, Streamlit, Machine Learning, Scikit-Learn",
+      "description": ""
+    }
+  ],
+  "certifications": [],
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Fluent"
+    },
+    {
+      "name": "Hindi",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Odia",
+      "proficiency": "Intermediate"
+    },
+    {
+      "name": "Gujarati",
+      "proficiency": "Intermediate"
+    }
+  ],
+  "education": [
+    {
+      "gpa": "9.13",
+      "year": "2026",
+      "institution": "GIFT Autonomous, Bhubaneswar",
+      "degree": "B.Tech in Computer Science and Engineering"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Tata Groups, Mumbai",
+      "position": "AI Intern",
+      "start_date": "2025-02",
+      "end_date": "2025-05",
+      "technologies": "Python, Langchain, AI-Agents, NextJs, FastAPI",
+      "description": ""
+    },
+    {
+      "company": "National Institute of Technologt, Rourkela",
+      "position": "AI and Data Science Intern",
+      "start_date": "2024-05",
+      "end_date": "2024-07",
+      "technologies": "Python, TensorFlow, Scikit-Learn, Numpy, Pandas, Matplotlib",
+      "description": ""
+    }
+  ],
+  "skills": [
+    "Python",
+    "Java",
+    "Machine Learning",
+    "Deep Learning",
+    "Langchain",
+    "SQL",
+    "DSA"
+  ],
+  "personal_info": {
+    "github": "https://github.com/Mohanty-Hitesh=4495",
+    "location": "Bhubaneswar, Odisha",
+    "phone": "+917205374495",
+    "linkedin": "https://www.linkedin.com/in/hitesh-mohanty8/",
+    "full_name": "Mohanty Hitesh Rabindranath",
+    "email": "mohantyhitesh4495@gmail.com"
+  }
+}
