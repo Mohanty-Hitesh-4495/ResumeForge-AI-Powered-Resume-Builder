@@ -353,11 +353,11 @@ if st.session_state.user:
         # st.markdown('<div class="info-grid">', unsafe_allow_html=True)
         # Contact details
         contact_info = [
-            ("📧 Email", personal.get('email', 'Not provided')),
-            ("📱 Phone", personal.get('phone', 'Not provided')),
-            ("📍 Location", personal.get('location', 'Not provided')),
-            ("💼 LinkedIn", personal.get('linkedin', 'Not provided')),
-            ("🐙 GitHub", personal.get('github', 'Not provided'))
+            ("Email", personal.get('email', 'Not provided')),
+            ("Phone", personal.get('phone', 'Not provided')),
+            ("Location", personal.get('location', 'Not provided')),
+            ("LinkedIn", personal.get('linkedin', 'Not provided')),
+            ("GitHub", personal.get('github', 'Not provided'))
         ]
         for label, value in contact_info:
             # Check if it's a URL for LinkedIn/GitHub
