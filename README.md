@@ -1,13 +1,27 @@
 <div align="center">
-  <h1> ResumeForge: AI-Powered Resume Builder </h1>
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Groq-412991?style=for-the-badge&logo=groq&logoColor=white" />
-  <img src="https://img.shields.io/badge/langchain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" />
-  <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
-  <img src="https://img.shields.io/badge/jinja-white.svg?style=for-the-badge&logo=jinja&logoColor=black" />
-  <img src="https://img.shields.io/badge/Streamlit-%23FE4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white" />
 
-  <h3>ResumeForge is an intelligent resume builder that helps you create professional resumes with AI-powered suggestions and beautiful templates. 🚀</h3>
+  <h1>ResumeForge: AI-Powered Resume Builder 
+    <a href="https://youtu.be/KRtFo26X4J4">
+      <img src="https://img.shields.io/badge/YouTube-Watch-red?style=flat-square&logo=youtube" />
+    </a>
+  </h1>
+
+  <!-- Tech Stack Badges -->
+  <p>
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+    <img src="https://img.shields.io/badge/Groq-412991?style=for-the-badge&logo=groq&logoColor=white" />
+    <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" />
+    <img src="https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
+    <img src="https://img.shields.io/badge/Jinja-white.svg?style=for-the-badge&logo=jinja&logoColor=black" />
+    <img src="https://img.shields.io/badge/Streamlit-%23FE4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white" />
+  </p>
+
+  <!-- Short Description -->
+  <h3>
+    ResumeForge is an intelligent resume builder that helps you create professional resumes 
+    with AI-powered suggestions and beautiful templates. 🚀
+  </h3>
+
 </div>
 
 ## Motivation
